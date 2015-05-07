@@ -28,6 +28,16 @@ public class Application {
         listPemesan.add(p);
     }
 
+    public Pemesan returnPemesan(String username) {
+        Pemesan p = null;
+        for (Pemesan temp : listPemesan) {
+            if (temp.getUsername().equals(username)) {
+                p = temp;
+            }
+        }
+        return p;
+    }
+
     public boolean login(String username, String password) {
         boolean cek = false;
         for (Pemesan temp : listPemesan) {
@@ -39,6 +49,16 @@ public class Application {
     public void addMenu(String idMenu, String namaMenu, double harga) {
         Menu m = new Menu(idMenu, namaMenu, harga);
         listMenu.add(m);
+    }
+
+    public Menu returnMenu(String idMenu) {
+        Menu m = null;
+        for (Menu temp : listMenu) {
+            if (temp.getIdMenu().equals(idMenu)) {
+                m = temp;
+            }
+        }
+        return m;
     }
 
     public void deleteMenu(String idMenu) {
@@ -70,6 +90,16 @@ public class Application {
     public void addPetugas(String idPetugas, String namaPetugas) {
         Petugas p = new Petugas(idPetugas, namaPetugas);
         listPetugas.add(p);
+    }
+
+    public Petugas returnPetugas(String idPetugas) {
+        Petugas p = null;
+        for (Petugas temp : listPetugas) {
+            if (temp.getIdPetugas().equals(idPetugas)) {
+                p = temp;
+            }
+        }
+        return p;
     }
 
     public void deletePetugas(String idPetugas) {
