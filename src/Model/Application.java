@@ -15,10 +15,12 @@ public class Application {
 
     private ArrayList<Pemesan> listPemesan;
     private ArrayList<Menu> listMenu;
+    private ArrayList<Petugas> listPetugas;
 
     public Application() {
         listPemesan = new ArrayList<>();
         listMenu = new ArrayList<>();
+        listPetugas = new ArrayList<>();
     }
 
     public void addAccount(String username, String password, String alamat, String nohp) {
@@ -39,11 +41,41 @@ public class Application {
         listMenu.add(m);
     }
 
+    public void deleteMenu(String idMenu) {
+        for (Menu temp : listMenu) {
+            if (temp.getIdMenu().equals(idMenu)) {
+                listMenu.remove(listMenu.indexOf(temp));
+            }
+        }
+    }
+
+    public void updateHarga(String idMenu, double harga) {
+        for (Menu temp : listMenu) {
+            if (temp.getIdMenu().equals(idMenu)) {
+                temp = new Menu(temp.getIdMenu(), temp.getNamaMenu(), harga);
+                listMenu.set(listMenu.indexOf(temp), temp);
+            }
+        }
+    }
+
     public void editAlamat(String username, String alamat) {
         for (Pemesan temp : listPemesan) {
             if (temp.getUsername().equals(username)) {
                 temp = new Pemesan(temp.getUsername(), temp.getPassword(), alamat, temp.getNohp());
                 listPemesan.set(listPemesan.indexOf(temp), temp);
+            }
+        }
+    }
+
+    public void addPetugas(String idPetugas, String namaPetugas) {
+        Petugas p = new Petugas(idPetugas, namaPetugas);
+        listPetugas.add(p);
+    }
+
+    public void deletePetugas(String idPetugas) {
+        for (Petugas temp : listPetugas) {
+            if (temp.getIdPetugas().equals(idPetugas)) {
+                listPetugas.remove(listPetugas.indexOf(temp));
             }
         }
     }
