@@ -20,13 +20,19 @@ public class Console {
         // TODO code application logic here
         Application app = new Application();
         app.addAccount("nikhosagala", "humbala", "Sukapura", "0813");
+        app.addAccount("nanda", "123456", "Mangga Dua", "0813");
+        app.addAccount("qais", "qwerty", "Sukabirus", "0856");
+        app.addAccount("fajarkm", "asdf", "Sukabirus", "0818");
         app.addMenu("Ma001", "Nasi", 3000);
+        app.addMenu("Mi001", "Teh Manis", 2500);
+        app.addMenu("Ma002", "Nasi Kuning", 5000);
         app.addPetugas("P001", "Paijo");
+        app.addPetugas("P002", "Paimin");
         app.updateHarga("Ma001", 4000);
-        System.out.println(app.getListPemesan().get(0).getUsername());
-        System.out.println(app.getListMenu().get(0).getNamaMenu());
-        System.out.println(app.getListPetugas().get(0).getNamaPetugas());
-        System.out.println(app.getListMenu().get(0).getHarga());
+        System.out.println(app.getListPemesan().get(2).getUsername());
+        System.out.println(app.getListMenu().get(1).getNamaMenu());
+        System.out.println(app.getListPetugas().get(1).getNamaPetugas());
+        System.out.println(app.getListMenu().get(2).getHarga());
     }
 
 }
