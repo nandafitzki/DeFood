@@ -57,7 +57,5 @@ public class Pemesan {
     public void setNohp(String nohp) {
         this.nohp = nohp;
     }
-    
-    
 
 }

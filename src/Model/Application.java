@@ -52,8 +52,8 @@ public class Application {
     public void updateHarga(String idMenu, double harga) {
         for (Menu temp : listMenu) {
             if (temp.getIdMenu().equals(idMenu)) {
-                temp = new Menu(temp.getIdMenu(), temp.getNamaMenu(), harga);
-                listMenu.set(listMenu.indexOf(temp), temp);
+                Menu m = new Menu(temp.getIdMenu(), temp.getNamaMenu(), harga);
+                listMenu.set(listMenu.indexOf(temp), m);
             }
         }
     }
@@ -61,8 +61,8 @@ public class Application {
     public void editAlamat(String username, String alamat) {
         for (Pemesan temp : listPemesan) {
             if (temp.getUsername().equals(username)) {
-                temp = new Pemesan(temp.getUsername(), temp.getPassword(), alamat, temp.getNohp());
-                listPemesan.set(listPemesan.indexOf(temp), temp);
+                Pemesan p = new Pemesan(temp.getUsername(), temp.getPassword(), alamat, temp.getNohp());
+                listPemesan.set(listPemesan.indexOf(temp), p);
             }
         }
     }
@@ -79,4 +79,17 @@ public class Application {
             }
         }
     }
+
+    public ArrayList<Pemesan> getListPemesan() {
+        return listPemesan;
+    }
+
+    public ArrayList<Menu> getListMenu() {
+        return listMenu;
+    }
+
+    public ArrayList<Petugas> getListPetugas() {
+        return listPetugas;
+    }
+
 }

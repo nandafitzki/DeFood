@@ -37,6 +37,5 @@ public class Petugas {
     public void setNamaPetugas(String namaPetugas) {
         this.namaPetugas = namaPetugas;
     }
-    
 
 }
