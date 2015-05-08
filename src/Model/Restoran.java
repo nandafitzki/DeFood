@@ -18,6 +18,11 @@ public class Restoran {
     public Restoran() {
     }
 
+    public Restoran(String namaRestoran, String alamat) {
+        this.namaRestoran = namaRestoran;
+        this.alamat = alamat;
+    }
+
     public Restoran(String idRestoran, String namaRestoran, String alamat) {
         this.idRestoran = idRestoran;
         this.namaRestoran = namaRestoran;

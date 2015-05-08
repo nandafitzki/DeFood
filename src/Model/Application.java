@@ -18,12 +18,14 @@ public class Application {
     private ArrayList<Pemesan> listPemesan;
     private ArrayList<Menu> listMenu;
     private ArrayList<Petugas> listPetugas;
+    private ArrayList<Restoran> listRestoran;
     private Database data;
 
     public Application() {
         listPemesan = new ArrayList<>();
         listMenu = new ArrayList<>();
         listPetugas = new ArrayList<>();
+        listRestoran = new ArrayList<>();
         data = new Database();
     }
 
