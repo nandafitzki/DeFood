@@ -92,6 +92,16 @@ public class Application {
         }
     }
 
+    public void loadMenu() throws SQLException {
+        try {
+            data.connect();
+            listMenu = data.getMenu();
+            data.disconnect();
+        } catch (SQLException ex) {
+            throw new SQLException("SQL Exception.");
+        }
+    }
+
     public void editAlamat(String username, String alamat) {
         for (Pemesan temp : listPemesan) {
             if (temp.getUsername().equals(username)) {

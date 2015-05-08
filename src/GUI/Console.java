@@ -7,6 +7,7 @@ package GUI;
 
 import Database.Database;
 import Model.Application;
+import Model.Menu;
 import Model.Pemesan;
 import java.sql.SQLException;
 
@@ -24,25 +25,26 @@ public class Console {
         Application app = new Application();
         Database db = new Database();
         Pemesan p;
+        Menu m;
         db.connect();
-        app.addMenu("Ma001", "Nasi", 3000);
-        app.addMenu("Mi001", "Teh Manis", 2500);
-        app.addMenu("Ma002", "Nasi Kuning", 5000);
         app.addPetugas("P001", "Paijo");
         app.addPetugas("P002", "Paimin");
-        app.updateHarga("Ma001", 4000);
-        app.loadPemesan();
-        System.out.println(app.getListPemesan().get(1).getUsername());
-        System.out.println(app.getListMenu().get(1).getNamaMenu());
-        System.out.println(app.getListPetugas().get(1).getNamaPetugas());
-        System.out.println(app.getListMenu().get(2).getHarga());
         //p = new Pemesan("username", "password", "alamat", "nohp");
         //db.savePemesan(p);
         //p = new Pemesan("nikhosagala", "humbala", "Sukapura", "0813");
         //db.savePemesan(p);
         //db.deletePemesan("username");
-        System.out.println(db.loginFromDb("nikhosagala", "password"));
+        app.loadPemesan();
+        System.out.println(app.getListPemesan().get(1).getUsername());
+        System.out.println(app.getListPetugas().get(1).getNamaPetugas());
+        //m = new Menu("Ma001", "Nasi", 3000);
+        //db.saveMenu(m);
+        //m = new Menu("Mi001", "Teh Manis", 2500);
+        //db.saveMenu(m);
+        app.loadMenu();
+        System.out.println(app.getListMenu().get(0).getNamaMenu());
+        System.out.println(app.getListMenu().get(1).getHarga());
+        System.out.println(db.loginFromDb("nikhosagala", "humbala"));
         db.disconnect();
     }
-
 }

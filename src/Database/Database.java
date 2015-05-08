@@ -6,6 +6,7 @@
 package Database;
 
 import Model.Application;
+import Model.Menu;
 import Model.Pemesan;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -95,4 +96,37 @@ public class Database {
         return cek;
     }
 
+    public void saveMenu(Menu m) throws SQLException {
+        try {
+            String query = "insert into menu(id_menu,nama_menu,harga) values ('" + m.getIdMenu() + "','" + m.getNamaMenu() + "'," + m.getHarga() + ")";
+            statement.execute(query);
+        } catch (SQLException ex) {
+            throw new SQLException("SQL Exception.");
+        }
+    }
+
+    public ArrayList<Menu> getMenu() throws SQLException {
+        ArrayList<Menu> listMenu = new ArrayList<>();
+        Menu m;
+        try {
+            resultSet = statement.executeQuery("select * from menu");
+            while (resultSet.next()) {
+                m = new Menu(resultSet.getString(1), resultSet.getString(2), resultSet.getDouble(3));
+                listMenu.add(m);
+            }
+
+        } catch (SQLException ex) {
+            throw new SQLException("SQL Exception.");
+        }
+        return listMenu;
+    }
+
+    public void deleteMenu(String idMenu) throws SQLException {
+        try {
+            String query = "delete from menu where id_menu = '" + idMenu + "'";
+            statement.execute(query);
+        } catch (SQLException ex) {
+            throw new SQLException("SQL Excepcion.");
+        }
+    }
 }
