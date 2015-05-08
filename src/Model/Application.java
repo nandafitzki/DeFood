@@ -5,6 +5,8 @@
  */
 package Model;
 
+import Database.Database;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -16,11 +18,13 @@ public class Application {
     private ArrayList<Pemesan> listPemesan;
     private ArrayList<Menu> listMenu;
     private ArrayList<Petugas> listPetugas;
+    private Database data;
 
     public Application() {
         listPemesan = new ArrayList<>();
         listMenu = new ArrayList<>();
         listPetugas = new ArrayList<>();
+        data = new Database();
     }
 
     public void addAccount(String username, String password, String alamat, String nohp) {
@@ -36,6 +40,16 @@ public class Application {
             }
         }
         return p;
+    }
+
+    public void loadPemesan() throws SQLException {
+        try {
+            data.connect();
+            listPemesan = data.getPemesan();
+            data.disconnect();
+        } catch (SQLException ex) {
+            throw new SQLException("SQL Exception.");
+        }
     }
 
     public boolean login(String username, String password) {

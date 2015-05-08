@@ -7,12 +7,12 @@ package Database;
 
 import Model.Application;
 import Model.Pemesan;
-import Model.Petugas;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -50,9 +50,37 @@ public class Database {
     }
 
     public void savePemesan(Pemesan p) throws SQLException {
-        //Pemesan p = app.returnPemesan(username);
-        String query = "insert into pemesan(username,password,alamat,nohp) values ('" + p.getUsername() + "','" + p.getPassword() + "','" + p.getAlamat() + "','" + p.getNohp() + "')";
-        statement.execute(query);
+        try {
+            String query = "insert into pemesan(username,password,alamat,nohp) values ('" + p.getUsername() + "','" + p.getPassword() + "','" + p.getAlamat() + "','" + p.getNohp() + "')";
+            statement.execute(query);
+        } catch (SQLException ex) {
+            throw new SQLException("SQL Exception.");
+        }
+    }
+
+    public ArrayList<Pemesan> getPemesan() throws SQLException {
+        ArrayList<Pemesan> listPemesan = new ArrayList<>();
+        Pemesan p;
+        try {
+            resultSet = statement.executeQuery("select * from pemesan");
+            while (resultSet.next()) {
+                p = new Pemesan(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4));
+                listPemesan.add(p);
+            }
+        } catch (SQLException ex) {
+            throw new SQLException("SQL Exception.");
+        }
+        return listPemesan;
+    }
+
+    public void deletePemesan(String username) throws SQLException {
+        try {
+            String query = "delete from pemesan where username = '" + username + "'";
+            statement.execute(query);
+        } catch (SQLException ex) {
+            throw new SQLException("SQL Exception.");
+        }
+
     }
 
     public boolean loginFromDb(String username, String password) throws SQLException {
