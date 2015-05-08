@@ -42,6 +42,15 @@ public class Application {
         return p;
     }
 
+    public void editAlamat(String username, String alamat) {
+        for (Pemesan temp : listPemesan) {
+            if (temp.getUsername().equals(username)) {
+                Pemesan p = new Pemesan(temp.getUsername(), temp.getPassword(), alamat, temp.getNohp());
+                listPemesan.set(listPemesan.indexOf(temp), p);
+            }
+        }
+    }
+
     public void loadPemesan() throws SQLException {
         try {
             data.connect();
@@ -99,15 +108,6 @@ public class Application {
             data.disconnect();
         } catch (SQLException ex) {
             throw new SQLException("SQL Exception.");
-        }
-    }
-
-    public void editAlamat(String username, String alamat) {
-        for (Pemesan temp : listPemesan) {
-            if (temp.getUsername().equals(username)) {
-                Pemesan p = new Pemesan(temp.getUsername(), temp.getPassword(), alamat, temp.getNohp());
-                listPemesan.set(listPemesan.indexOf(temp), p);
-            }
         }
     }
 
